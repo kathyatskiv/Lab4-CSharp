@@ -112,6 +112,11 @@ namespace YatskivLab4.ViewModels
 
         #endregion
 
+        public void updatePersonList()
+        {
+            _personsList = StationManager.DataStorage.PersonsList;
+        }
+
         #region Commands
 
         public RelayCommand<object> AddPersonCommand => _addPersonCommand ?? (_addPersonCommand = new RelayCommand<object>(o => AddPersonImplementation()));
@@ -149,8 +154,11 @@ namespace YatskivLab4.ViewModels
             {
                 StationManager.DataStorage.DeletePerson(SelectedPerson);
                 OnPropertyChanged(nameof(MyPersonsList));
+
+                updatePersonList();
             });
             LoaderManager.Instance.HideLoader();
+
         }
 
         private void SaveImplementation()

@@ -109,7 +109,7 @@ namespace YatskivLab4.ViewModels
             if (succes)
             {
                 StationManager.DataStorage.AddPerson(_person);
-                StationManager.MainVM.MyPersonsList.Append<Person>(_person);
+                StationManager.MainVM.updatePersonList();
                 _person = new Person("", "", "");
                 Person = _person;
                 StationManager.MainVM.UpdateList();
