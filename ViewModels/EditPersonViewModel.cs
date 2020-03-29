@@ -19,6 +19,7 @@ namespace YatskivLab4.ViewModels
         #region Fields
         private Person _person = StationManager.CurrentPerson;
         private Person _tempPerson = StationManager.TempPerson;
+        private Person _delPerson;
         #endregion
         #region Commands
         private RelayCommand<object> _proceedCommand;
@@ -51,6 +52,7 @@ namespace YatskivLab4.ViewModels
                 OnPropertyChanged();
             }
         }
+
         #endregion
 
         #region Commands
@@ -124,13 +126,15 @@ namespace YatskivLab4.ViewModels
 
             if (succes)
             {
+                Person _delperson = _person;
                 Person = TempPerson;
                 StationManager.TempPerson = null;
                 StationManager.DataStorage.AddPerson(_person);
+                StationManager.DataStorage.DeletePerson(_delperson);
+                StationManager.MainVM.updatePersonList();
                 StationManager.DataStorage.SaveChanges();
                 StationManager.MainVM.UpdateList();
                 NavigationManager.Instance.Navigate(ViewType.Main);
-                UpdatePersons();
             }
         }
 
