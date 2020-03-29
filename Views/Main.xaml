@@ -1,0 +1,64 @@
+﻿<Window x:Class="YatskivLab4.Views.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YatskivLab4.Views"
+        mc:Ignorable="d"
+        Title="List of the Persons" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Text="Sort by this:  " Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="3" HorizontalAlignment="Left" Margin="10 1" ItemsSource="{Binding SortList}" SelectedIndex="{Binding SortIndex}"/>
+
+
+        <TextBlock Text="Criteria for filter: " Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" HorizontalAlignment="Center" Margin="1" ItemsSource="{Binding FilterList}" SelectedIndex="{Binding FilterIndex}"/>
+
+        <TextBlock Text="Filter word:  " Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Grid.Column="5" Grid.Row="1" Margin="10 2" Text="{Binding FilterWord}"/>
+
+        <Button Grid.Column="7" Grid.Row="1" Content="Filter" Margin="1" Command="{Binding FilterCommand}"></Button>
+
+        <DataGrid Name="PersonTable" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="7" 
+                  ItemsSource="{Binding MyPersonsList, Mode=OneWay}" IsReadOnly="True"
+                  SelectedItem="{Binding SelectedPerson, Mode=TwoWay}" SelectionUnit="FullRow"
+                  SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                  SelectionMode="Single" CanUserSortColumns="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Surame" Binding="{Binding Surame}"/>
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                <DataGridCheckBoxColumn Header="Adult" Binding="{Binding IsAdult, Mode=OneWay}"/>
+                <DataGridCheckBoxColumn Header="Birthday" Binding="{Binding IsBirthday, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Sun Sign" Binding="{Binding SunSign}"/>
+                <DataGridTextColumn Header="Chinese Sign" Binding="{Binding ChineseSign}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Background="Bisque" Grid.Row="3" Grid.Column="1" Content="Add new Person" Command="{Binding AddPersonCommand}"></Button>
+        <Button Background="Bisque" Grid.Row="3" Grid.Column="3" Content="Edit selected person" Command="{Binding EditPersonCommand}"></Button>
+        <Button Background="Bisque" Grid.Row="3" Grid.Column="5" Content="Delete selected person" Command="{Binding DeletePersonCommand}"></Button>
+        <Button Background="Bisque" Grid.Row="3" Grid.Column="7" Content="Save data" Command="{Binding SaveCommand}"></Button>
+
+    </Grid>
+</Window>
