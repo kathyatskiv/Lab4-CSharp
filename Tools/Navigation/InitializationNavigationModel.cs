@@ -1,6 +1,7 @@
 ﻿using System;
-//using MainView = KMA.ProgrammingInCSharp2019.Practice7.UserList.Views.MainView;
-//using SignUpView = KMA.ProgrammingInCSharp2019.Practice7.UserList.Views.Authentication.SignUpView;
+using Main = YatskivLab4.Views.Main;
+using AddPerson = YatskivLab4.Views.AddPerson;
+using EditPerson = YatskivLab4.Views.EditPerson;
 using YatskivLab4.Views;
 
 namespace YatskivLab4.Tools.Navigation

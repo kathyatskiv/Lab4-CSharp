@@ -117,6 +117,11 @@ namespace YatskivLab4.Models
             }
         }
 
+        public int Age
+        {
+            get { return (DateTime.Today.Year - Birthday.Year) - (DateTime.Today.DayOfYear >= Birthday.DayOfYear ? 0 : 1); }
+        }
+
         public bool IsAdult
         {
             get
@@ -190,28 +195,28 @@ namespace YatskivLab4.Models
         #region Constructors
         internal Person()
         {
-            Name = "";
-            Surname = "";
-            Email = "";
-            Birthday = DateTime.Today;
+            _name = "";
+            _surname = "";
+            _email = "";
+            _birthday = new DateTime(2001, 1, 1);
 
         }
 
         internal Person(string name, string surname, string email, DateTime birthday)
         {
-            Name = name;
-            Surname = surname;
-            Email = email;
-            Birthday = birthday;
+            _name = name;
+            _surname = surname;
+            _email = email;
+            _birthday = birthday;
 
         }
 
-        public Person(string firstName, string lastName, string email) : this(firstName, lastName, email,
+        public Person(string name, string surname, string email) : this(name, surname, email,
             new DateTime(2001, 1, 1))
         {
         }
 
-        public Person(string firstName, string lastName, DateTime birthDate) : this(firstName, lastName, " ", birthDate)
+        public Person(string name, string surname, DateTime birthday) : this(name, surname, " ", birthday)
         {
         }
 

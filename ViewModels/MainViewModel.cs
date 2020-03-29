@@ -68,9 +68,10 @@ namespace YatskivLab4.ViewModels
             set
             {
                 _selectedPerson = value;
-
-                OnPropertyChanged();
                 StationManager.CurrentPerson = _selectedPerson;
+
+                //UpdateList();
+                OnPropertyChanged();
             }
         }
 
@@ -79,6 +80,7 @@ namespace YatskivLab4.ViewModels
             get
             {
                 IEnumerable<Person> list = _personsList;
+                
                 switch (SortIndex)
                 {
                     case 0: list = list.OrderBy(p => p.Name); break;
@@ -128,7 +130,7 @@ namespace YatskivLab4.ViewModels
 
         private void AddPersonImplementation()
         {
-            StationManager.CurrentPerson = new Person("", "", "");
+            StationManager.CurrentPerson = new Person();
             NavigationManager.Instance.Navigate(ViewType.AddPerson);
         }
 
@@ -136,8 +138,8 @@ namespace YatskivLab4.ViewModels
         {
             StationManager.CurrentPerson = SelectedPerson;
             StationManager.TempPerson = new Person(StationManager.CurrentPerson.Name, StationManager.CurrentPerson.Surname, StationManager.CurrentPerson.Email, StationManager.CurrentPerson.Birthday);
-            StationManager.EditPersonVM.UpdatePersons();
             NavigationManager.Instance.Navigate(ViewType.EditPerson);
+            StationManager.EditPersonVM.UpdatePersons();
         }
 
         private async void DeletePersonImplementation()

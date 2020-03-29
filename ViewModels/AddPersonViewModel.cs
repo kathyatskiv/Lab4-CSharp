@@ -32,6 +32,7 @@ namespace YatskivLab4.ViewModels
             set
             {
                 _person = value;
+
                 OnPropertyChanged();
             }
         }
@@ -108,6 +109,7 @@ namespace YatskivLab4.ViewModels
             if (succes)
             {
                 StationManager.DataStorage.AddPerson(_person);
+                StationManager.MainVM.MyPersonsList.Append<Person>(_person);
                 _person = new Person("", "", "");
                 Person = _person;
                 StationManager.MainVM.UpdateList();

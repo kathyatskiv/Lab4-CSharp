@@ -31,6 +31,7 @@ namespace YatskivLab4.ViewModels
         {
             StationManager.EditPersonVM = this;
         }
+
         public Person Person
         {
             get => _person;

@@ -1,11 +1,11 @@
-﻿<Window x:Class="YatskivLab4.Views.AddPerson"
+﻿<UserControl x:Class="YatskivLab4.Views.AddPerson"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatskivLab4.Views"
         mc:Ignorable="d"
-        Title="Add new person" Height="450" Width="800">
+        Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"></ColumnDefinition>
@@ -48,4 +48,4 @@
         <Button Background="Bisque" Grid.Row="13" Grid.Column="1" Grid.ColumnSpan="2" Content="Proceed" Command="{Binding ProceedCommand}"></Button>
 
     </Grid>
-</Window>
+</UserControl>

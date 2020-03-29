@@ -21,7 +21,6 @@ namespace YatskivLab4.Tools.Navigation
         {
             if (!ViewsDictionary.ContainsKey(viewType))
                 InitializeView(viewType);
-
             ContentOwner.ContentControl.Content = ViewsDictionary[viewType];
         }
 

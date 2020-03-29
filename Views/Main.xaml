@@ -1,11 +1,11 @@
-﻿<Window x:Class="YatskivLab4.Views.Main"
+﻿<UserControl x:Class="YatskivLab4.Views.Main"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YatskivLab4.Views"
         mc:Ignorable="d"
-        Title="List of the Persons" Height="450" Width="800">
+        Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"></ColumnDefinition>
@@ -45,8 +45,9 @@
                   SelectionMode="Single" CanUserSortColumns="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Surame" Binding="{Binding Surame}"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"/>
                 <DataGridTextColumn Header="E-mail" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Date of birth" Binding="{Binding Birthday, StringFormat=\{0:dd.MM.yyyy\}, Mode=OneWay}"/>
                 <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
                 <DataGridCheckBoxColumn Header="Adult" Binding="{Binding IsAdult, Mode=OneWay}"/>
                 <DataGridCheckBoxColumn Header="Birthday" Binding="{Binding IsBirthday, Mode=OneWay}"/>
@@ -61,4 +62,4 @@
         <Button Background="Bisque" Grid.Row="3" Grid.Column="7" Content="Save data" Command="{Binding SaveCommand}"></Button>
 
     </Grid>
-</Window>
+</UserControl>

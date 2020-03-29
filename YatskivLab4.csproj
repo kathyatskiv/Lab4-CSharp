@@ -59,7 +59,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Tools\Exceptions\PersonExceptions.cs" />
-    <Compile Include="Tools\BaseViewModel.cs" />
     <Compile Include="Tools\DataStorage\IDataStorage.cs" />
     <Compile Include="Tools\DataStorage\SerializedDataStorage.cs" />
     <Compile Include="Tools\FileFolderHelper.cs" />
